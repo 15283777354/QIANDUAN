@@ -1,0 +1,11 @@
+.m{
+    float: left;
+    display:flex; 
+}
+.r{
+    float: right;
+    display: flex;
+    width: 1743px;
+    justify-content: space-around;
+    align-content: center;
+}

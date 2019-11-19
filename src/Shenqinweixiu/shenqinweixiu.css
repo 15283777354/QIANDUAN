@@ -1,0 +1,18 @@
+.shenqinweixiu{
+    font-family: "楷体";
+    font-weight: 50px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+   justify-content: space-around;
+}
+.a{
+    float: top;
+}
+.b{
+    float: center;
+}
+.c{
+    float: bottom;
+}

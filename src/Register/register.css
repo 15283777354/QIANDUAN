@@ -1,0 +1,9 @@
+*{margin: 0;padding: 0;}
+.register{
+    font-family: "楷体";
+    font-weight: 50px;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    
+}

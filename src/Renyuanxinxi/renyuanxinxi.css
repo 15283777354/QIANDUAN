@@ -1,0 +1,41 @@
+.whole{
+    background-image: url(../images/2.jpg);
+    width:100%;
+    height: 750px;
+  }
+  .one{
+      color: black;
+      padding: 10px;
+      width: 800px;
+      margin:auto;
+      border: 3px solid rgb(12, 156, 31);
+      border-collapse: collapse; 
+  }
+  .two{
+      color:black;
+      background: rgb(255, 255, 255);
+      margin-left: 680px;
+      display: inline-block;
+      margin-top: 20px;
+  }
+  .t1{
+    color: black;
+    line-height: 40px;
+    }
+    .d1{
+  border: 1px solid #4BCD55;
+  height: 28px;
+  text-align: center;
+    }
+  .r1 :nth-child(even){
+      background-color: white;
+  }
+  .r1 :nth-child(odd){
+      background-color: #fff;
+  }
+  .r1 :hover{
+      background-color: #4BCD55;
+  }
+  .r1 {
+      transition: 1.5s;
+  }

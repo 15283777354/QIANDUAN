@@ -1,0 +1,10 @@
+*{margin: 0;padding: 0;}
+.weixiutousu{
+    font-family: "楷体";
+    font-size:50px;
+    font-weight: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:aquamarine;
+}
