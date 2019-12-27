@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Component} from 'react'
 import { Form, Input, Tooltip,  Icon, Select, Row, Checkbox, message, Button, AutoComplete, } from 'antd';
 import Background from '../images/12.jpg';
 import Axios from 'axios';
@@ -12,7 +12,7 @@ var sectionStyle = {
 var RegisterCss = require('./register.css');
 
   const { Option } = Select;
-  class RegistrationForm extends React.Component {
+  class RegistrationForm extends Component {
     constructor(props){
       super(props);
       this.state={}
@@ -31,15 +31,12 @@ var RegisterCss = require('./register.css');
         "name":this.state.name,
         "phone":this.state.phone,
         "dormitory":this.state.dormitory
-
       }
       //axios
-      Axios.post(
-        {
+      Axios.post({
           url:"/user/register",
           data:JSON.stringify(data)
-        }
-      ).then(result=>{
+        }).then(result=>{
         if(result.state==2){
           message.info("用户名已存在")
         }else if(result.state==1){
@@ -183,21 +180,13 @@ var RegisterCss = require('./register.css');
             {getFieldDecorator('寝室号', {
             })(
               <AutoComplete
-                placeholder="请输入寝室号！"
+                placeholder="请输入寝室号！如1111"
               >
                 <Input name="dormitory" value={this.state.dormitory} onChange={e=>this.changeValue(e)}/>
               </AutoComplete>,
             )}
           </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
-            {getFieldDecorator('agreement', {
-              valuePropName: 'checked',
-            })(
-              <Checkbox>
-                我已阅读过 <a href="">用户协议</a>
-              </Checkbox>,
-            )}
-          </Form.Item>
+      
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" href="/login" onClick={this.upload()}>
              确认注册
