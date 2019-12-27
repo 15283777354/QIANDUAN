@@ -1,7 +1,7 @@
 import React from 'react'
-import { Form, Input, Tooltip,  Icon, Select, Row, Checkbox, Button, AutoComplete, } from 'antd';
+import { Form, Input, Tooltip,  Icon, Select, Row, Checkbox, message, Button, AutoComplete, } from 'antd';
 import Background from '../images/12.jpg';
-
+import Axios from 'axios';
 //定义背景样式
 
 var sectionStyle = {
@@ -13,6 +13,40 @@ var RegisterCss = require('./register.css');
 
   const { Option } = Select;
   class RegistrationForm extends React.Component {
+    constructor(props){
+      super(props);
+      this.state={}
+    }
+
+    changeValue=(e)=>{
+      this.setState({
+        [e.target.name]:e.target.value
+      })
+    }
+    upload = ()=>{
+      var data={
+        "stuid":this.state.stuid,
+        "password":this.state.password,
+        "confirm":this.state.confirm,
+        "name":this.state.name,
+        "phone":this.state.phone,
+        "dormitory":this.state.dormitory
+
+      }
+      //axios
+      Axios.post(
+        {
+          url:"/user/register",
+          data:JSON.stringify(data)
+        }
+      ).then(result=>{
+        if(result.state==2){
+          message.info("用户名已存在")
+        }else if(result.state==1){
+          message.info("注册成功")
+        }
+      })
+    }
     state = {
       confirmDirty: false,
       autoCompleteResult: [],
@@ -98,7 +132,7 @@ var RegisterCss = require('./register.css');
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="学号">
             {getFieldDecorator('email', {
-            })(<Input />)}
+            })(<Input name="stuid" value={this.state.stuid} onChange={e=>this.changeValue(e)}/>)}
           </Form.Item>
           <Form.Item label="密码" hasFeedback>
             {getFieldDecorator('password', {
@@ -111,7 +145,7 @@ var RegisterCss = require('./register.css');
                   validator: this.validateToNextPassword,
                 },
               ],
-            })(<Input.Password />)}
+            })(<Input.Password name="password" value={this.state.password} onChange={e=>this.changeValue(e)}/>)}
           </Form.Item>
           <Form.Item label="确认密码" hasFeedback>
             {getFieldDecorator('confirm', {
@@ -124,7 +158,7 @@ var RegisterCss = require('./register.css');
                   validator: this.compareToFirstPassword,
                 },
               ],
-            })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+            })(<Input.Password onBlur={this.handleConfirmBlur} name="confirm" value={this.state.confirm} onChange={e=>this.changeValue(e)}/>)}
           </Form.Item>
           <Form.Item
             label={
@@ -138,12 +172,12 @@ var RegisterCss = require('./register.css');
           >
             {getFieldDecorator('nickname', {
               rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-            })(<Input />)}
+            })(<Input name="name" value={this.state.name} onChange={e=>this.changeValue(e)}/>)}
           </Form.Item>
           <Form.Item label="手机号">
             {getFieldDecorator('phone', {
               rules: [{ required: true, message: 'Please input your phone number!' }],
-            })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
+            })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} name="phone" value={this.state.phone} onChange={e=>this.changeValue(e)}/>)}
           </Form.Item>
           <Form.Item label="寝室号">
             {getFieldDecorator('寝室号', {
@@ -151,7 +185,7 @@ var RegisterCss = require('./register.css');
               <AutoComplete
                 placeholder="请输入寝室号！"
               >
-                <Input />
+                <Input name="dormitory" value={this.state.dormitory} onChange={e=>this.changeValue(e)}/>
               </AutoComplete>,
             )}
           </Form.Item>
@@ -165,7 +199,7 @@ var RegisterCss = require('./register.css');
             )}
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" href="/login">
+            <Button type="primary" htmlType="submit" href="/login" onClick={this.upload()}>
              确认注册
             </Button>
           </Form.Item>
