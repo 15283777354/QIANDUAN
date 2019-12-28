@@ -39,7 +39,7 @@ class StudentPage extends React.Component {
               title={
                 <span>
                   <Icon type="crown" />
-                  <span>个人信息</span>
+                  <span>学生端</span>
                 </span>
               }
             >

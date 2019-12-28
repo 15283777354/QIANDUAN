@@ -36,7 +36,7 @@ class Sider extends React.Component {
           title={
             <span>
               <Icon type="crown" />
-              <span>所有信息</span>
+              <span>后勤端</span>
             </span>
           }
         >

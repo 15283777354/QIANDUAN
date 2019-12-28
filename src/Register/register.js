@@ -1,7 +1,6 @@
 import React,{Component} from 'react'
 import { Form, Input, Tooltip,  Icon, Select, Row, Checkbox, message, Button, AutoComplete, } from 'antd';
 import Background from '../images/12.jpg';
-import Axios from 'axios';
 //定义背景样式
 
 var sectionStyle = {
@@ -30,19 +29,36 @@ var RegisterCss = require('./register.css');
         "confirm":this.state.confirm,
         "name":this.state.name,
         "phone":this.state.phone,
-        "dormitory":this.state.dormitory
+        "dormitory":this.state.dormitory,
       }
-      //axios
-      Axios.post({
-          url:"/user/register",
-          data:JSON.stringify(data)
-        }).then(result=>{
+      //fetch
+      fetch("/user/register",{
+        method:"post",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      }).then(response=>response.json())
+      .then(result=>{
         if(result.state==2){
           message.info("用户名已存在")
         }else if(result.state==1){
           message.info("注册成功")
         }
+      }).catch(e=>{
+message.error(e);
       })
+      //axios
+      // Axios.post({
+      //     url:"/user/register",
+      //     data:JSON.stringify(data)
+      //   }).then(result=>{
+      //   if(result.state==2){
+      //     message.info("用户名已存在")
+      //   }else if(result.state==1){
+      //     message.info("注册成功")
+      //   }
+      // })
     }
     state = {
       confirmDirty: false,
@@ -179,16 +195,15 @@ var RegisterCss = require('./register.css');
           <Form.Item label="寝室号">
             {getFieldDecorator('寝室号', {
             })(
-              <AutoComplete
-                placeholder="请输入寝室号！如1111"
-              >
-                <Input name="dormitory" value={this.state.dormitory} onChange={e=>this.changeValue(e)}/>
-              </AutoComplete>,
+            
+                
+              
+                <Input placeholder="请输入寝室号！如1111" name="dormitory" value={this.state.dormitory} onChange={e=>this.changeValue(e)}/>
+              
             )}
           </Form.Item>
-      
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" href="/login" onClick={this.upload()}>
+            <Button type="primary" htmlType="submit" onClick={this.upload}>
              确认注册
             </Button>
           </Form.Item>
