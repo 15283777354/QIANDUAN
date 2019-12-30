@@ -88,56 +88,48 @@ export default class TousuxinxiPage extends React.Component{
                <table className={TousuxinxiCss.table1} border="2px" type="text">
                    <tr className={TousuxinxiCss.rr1}>
                        <th className={TousuxinxiCss.ta1}>投诉单号</th>
-                       <th className={TousuxinxiCss.ta1}>学生公寓</th>
                        <th className={TousuxinxiCss.ta1}>寝室号</th>
                        <th className={TousuxinxiCss.ta1}>维修物品</th>
                        <th className={TousuxinxiCss.ta1}>投诉内容</th>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>01</td>
-                       <td className={TousuxinxiCss.ta2}>三栋</td>
                        <td className={TousuxinxiCss.ta2}>3-122</td>
                        <td className={TousuxinxiCss.ta2}>灯管</td>
                        <td className={TousuxinxiCss.ta2}>灯管坏了</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>02</td>
-                       <td className={TousuxinxiCss.ta2}>四栋</td>
                        <td className={TousuxinxiCss.ta2}>4-114</td>
                        <td className={TousuxinxiCss.ta2}>电视</td>
                        <td className={TousuxinxiCss.ta2}>不能显示画面</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>03</td>
-                       <td className={TousuxinxiCss.ta2}>三栋</td>
                        <td className={TousuxinxiCss.ta2}>3-544</td>
                        <td className={TousuxinxiCss.ta2}>窗户</td>
                        <td className={TousuxinxiCss.ta2}>窗户碎了</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>04</td>
-                       <td className={TousuxinxiCss.ta2}>一栋</td>
                        <td className={TousuxinxiCss.ta2}>1-656</td>
                        <td className={TousuxinxiCss.ta2}>空调</td>
                        <td className={TousuxinxiCss.ta2}>不能制冷气</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>05</td>
-                       <td className={TousuxinxiCss.ta2}>二栋</td>
                        <td className={TousuxinxiCss.ta2}>2-151</td>
                        <td className={TousuxinxiCss.ta2}>热水器不能放热水</td>
                        <td className={TousuxinxiCss.ta2}>热水器不能放热水</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>06</td>
-                       <td className={TousuxinxiCss.ta2}>一栋</td>
                        <td className={TousuxinxiCss.ta2}>1-221</td>
                        <td className={TousuxinxiCss.ta2}>寝室门</td>
                        <td className={TousuxinxiCss.ta2}>门锁坏了</td>
                    </tr>
                    <tr className={TousuxinxiCss.rr1}>
                        <td className={TousuxinxiCss.ta2}>07</td>
-                       <td className={TousuxinxiCss.ta2}>一栋</td>
                        <td className={TousuxinxiCss.ta2}>1-346</td>
                        <td className={TousuxinxiCss.ta2}>水龙头</td>
                        <td className={TousuxinxiCss.ta2}>水龙头松了，关不了水了</td>

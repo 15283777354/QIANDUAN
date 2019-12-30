@@ -205,7 +205,7 @@ message.error(e);
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" onClick={this.upload}>
              确认注册
-            </Button>
+            </Button>然后<a href="../login">前往登录</a>
           </Form.Item>
         </Form>
       );

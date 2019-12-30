@@ -111,7 +111,7 @@ export default class WeixiuxinxiPage extends React.Component{
                 <table className={Houqing.one}  type="text">
                     <tr className={Houqing.r1}>
                         <th  className={Houqing.t1}>维修单号</th>
-                        <th  className={Houqing.t1}>学生公寓</th>
+                      
                         <th  className={Houqing.t1}>寝室号</th>
                         <th  className={Houqing.t1}>维修物品</th>
                         <th  className={Houqing.t1}>维修状态</th>
@@ -121,8 +121,8 @@ export default class WeixiuxinxiPage extends React.Component{
                     </tr>
                     <tr className={Houqing.r1}>
                         <td className={Houqing.d1}>01</td>
-                        <td className={Houqing.d1}>三栋</td>
-                        <td className={Houqing.d1}>3-123</td>
+                       
+                        <td className={Houqing.d1}>3123</td>
                         <td className={Houqing.d1}>灯管</td>
                         <td className={Houqing.d1}>
                         <Select
@@ -147,8 +147,8 @@ export default class WeixiuxinxiPage extends React.Component{
                     </tr>
                     <tr className={Houqing.r1}>
                         <td className={Houqing.d1}>02</td>
-                        <td className={Houqing.d1}>二栋</td>
-                        <td className={Houqing.d1}>2-257</td>
+                       
+                        <td className={Houqing.d1}>2257</td>
                         <td className={Houqing.d1}>空调</td>
                         <td className={Houqing.d1}><Select
     showSearch
@@ -172,8 +172,8 @@ export default class WeixiuxinxiPage extends React.Component{
                     </tr>
                     <tr className={Houqing.r1}>
                         <td className={Houqing.d1}>03</td>
-                        <td className={Houqing.d1}>一栋</td>
-                        <td className={Houqing.d1}>1-411</td>
+                  
+                        <td className={Houqing.d1}>1411</td>
                         <td className={Houqing.d1}>寝室门</td>
                         <td className={Houqing.d1}><Select
     showSearch
@@ -197,8 +197,8 @@ export default class WeixiuxinxiPage extends React.Component{
                     </tr>
                     <tr className={Houqing.r1}>
                         <td className={Houqing.d1}>04</td>
-                        <td className={Houqing.d1}>一栋</td>
-                        <td className={Houqing.d1}>1-456</td>
+                      
+                        <td className={Houqing.d1}>1456</td>
                         <td className={Houqing.d1}>水龙头</td>
                         <td className={Houqing.d1}><Select
     showSearch
@@ -222,8 +222,8 @@ export default class WeixiuxinxiPage extends React.Component{
                     </tr>
                     <tr className={Houqing.r1}>
                         <td className={Houqing.d1}>05</td>
-                        <td className={Houqing.d1}>四栋</td>
-                        <td className={Houqing.d1}>4-563</td>
+                    
+                        <td className={Houqing.d1}>4563</td>
                         <td className={Houqing.d1}>电视</td>
                         <td className={Houqing.d1}><Select
     showSearch

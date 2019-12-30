@@ -16,10 +16,10 @@ export default class SushexinxiPage extends React.Component{
                         
                     </tr>
                     <tr className={Houqing.r1}>
-                        <td className={Houqing.d1}>20181001</td>
-                        <td className={Houqing.d1}>张三</td>
-                        <td className={Houqing.d1}>3-123</td>
-                        <td className={Houqing.d1}>123123123</td>
+                        <td className={Houqing.d1}>****</td>
+                        <td className={Houqing.d1}>****</td>
+                        <td className={Houqing.d1}>****</td>
+                        <td className={Houqing.d1}>****</td>
                     </tr>
                     
                     

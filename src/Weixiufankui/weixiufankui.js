@@ -2,8 +2,6 @@ import { Popconfirm, message,Form,Input,Checkbox,Button} from 'antd';
 import React from 'react' ;
 import Background from '../images/2.jpg';
 
-import { Rate } from 'antd';
-
 function confirm(e) {
   console.log(e);
   message.success('提交成功');
@@ -13,30 +11,6 @@ function cancel(e) {
   console.log(e);
   message.error('提交失败');
 }
-
-const desc = ['糟糕', '不好', '一般', '很好', '完美'];
-
-class Rater extends React.Component {
-  state = {
-    value: 3,
-  };
-
-  handleChange = value => {
-    this.setState({ value });
-  };
-
-  render() {
-    const { value } = this.state;
-    return (
-      <span>
-        <Rate tooltips={desc} onChange={this.handleChange} value={value} />
-        {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
-      </span>
-    );
-  }
-}
-
-
 //定义背景样式
 
 var sectionStyle = {
@@ -58,74 +32,65 @@ class NormalLoginForm extends React.Component {
     });
   };
 
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          寝室号：{getFieldDecorator('username', {
-            rules: [{ required: true, message: '你还没输入你的寝室号' }],
-          })(
-            <Input
-              placeholder=" 请输入寝室号 "
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          维修单号：{getFieldDecorator('weixiu', {
-            rules: [{ required: true, message: '你还没输入你的维修单号' }],
-          })(
-            <Input
-              placeholder="请输入维修单号  "
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          维修物品：{getFieldDecorator('weixiudanhao', {
-            rules: [{ required: true, message: '你还没输入你的维修物品' }],
-          })(
-            <Input
-              placeholder=" 请输入维修物品"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          维修服务评分：<Rater />
-        </Form.Item>
-        
-        <Form.Item>
-          对本次维修提出的建议：<TextArea rows={4} />
-        </Form.Item>
-        
-    
-
-
-        <Form.Item>
-          
-          <Popconfirm
-    title="你确定要提交吗？"
-    onConfirm={confirm}
-    onCancel={cancel}
-    okText="是"
-    cancelText="否"
-  >
-    <Button  href="#" type="primary" htmlType="submit" className="login-form-button">提交</Button>
-  </Popconfirm>
-        </Form.Item>
-      </Form>
-    );
-  }
 }
-
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
 
-
 export default class Header extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state={}
+  }
+
+  changeValue=(e)=>{
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+  upload = ()=>{
+    var data={
+      "orders":this.state.orders,
+      "dormitory":this.state.dormitory,
+      "item":this.state.item,
+      "score":this.state.score,
+      "advice":this.state.advice,
+    }
+    //fetch
+    fetch("/Fankui/Weixiufankui",{
+      method:"post",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)
+    }).then(response=>response.json())
+    .then(result=>{
+      if(result.state==2){
+        message.info("反馈失败")
+      }else if(result.state==1){
+        message.info("反馈成功")
+      }
+    }).catch(e=>{
+message.error(e);
+    })
+  }
     render(){
         return(
             <div className={WeixiutousuCss.weixiutousu}  style={sectionStyle}>
-                
-<WrappedNormalLoginForm />
+<div   className={WeixiutousuCss.weixiutousu} style={sectionStyle}>
+
+<div className={WeixiutousuCss.a}>
+  <div>维修单号：<Input placeholder="请输入维修单号！" name="orders" value={this.state.orders} onChange={e=>this.changeValue(e)}/></div>
+  <div> 寝室号：<Input placeholder="请输入寝室号！" name="dormitory" value={this.state.dormitory} onChange={e=>this.changeValue(e)}/></div>
+  <div>对本次维修评分：<Input placeholder="请输入:1-5星" name="score" value={this.state.score} onChange={e=>this.changeValue(e)}/></div>
+  </div>
+  <div className={WeixiutousuCss.b}>
+  维修物品：<Input placeholder="如：灯、门、床、空调" name="item" value={this.state.item} onChange={e=>this.changeValue(e)}/>
+ </div>
+  <div className={WeixiutousuCss.c}>
+建议：<TextArea rows={5} name="advice" value={this.state.advice} onChange={e=>this.changeValue(e)}/>
+</div>
+  <Button onClick={this.upload}>提交</Button>
+</div>
             </div>
         )
     }

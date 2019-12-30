@@ -1,6 +1,6 @@
 import React from 'react'
 import Background from '../images/14.jpg';
-import { Form, Icon, Input, Button, Checkbox,Tooltip,Select, Row, AutoComplete } from 'antd';
+import { Form, Icon, Input, Button, Checkbox,message, history, Tooltip,Select, Row, AutoComplete } from 'antd';
 //定义背景样式
 
 var sectionStyle = {
@@ -13,6 +13,47 @@ var LoginCss = require('./login.css');
 
 
 class NormalLoginForm extends React.Component {
+  
+  constructor(props){
+    super(props);
+    this.state={}
+  }
+
+  changeValue=(e)=>{
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+  upload = ()=>{
+    var data={
+      "stuid":this.state.stuid,
+      "password":this.state.password,
+      "confirm":this.state.confirm,
+      "name":this.state.name,
+      "phone":this.state.phone,
+      "dormitory":this.state.dormitory,
+    }
+    //fetch
+    fetch("/user/userLogin",{
+      method:"post",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)
+    }).then(response=>response.json())
+    .then(result=>{
+      if(result.state==1){
+        message.info("用户名不存在")
+      }else if(result.state==2){
+        message.info("登录成功")
+        window.location.href="/studentone";
+      }else if(result.state==3){
+        message.info("密码错误")
+      }
+    }).catch(e=>{
+message.error(e);
+    })
+  }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -32,7 +73,7 @@ class NormalLoginForm extends React.Component {
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="学号/工号"
+              placeholder="学号/工号" name="name" value={this.state.name} onChange={e=>this.changeValue(e)}
             />,
           )}
         </Form.Item>
@@ -47,7 +88,7 @@ class NormalLoginForm extends React.Component {
                   validator: this.validateToNextPassword,
                 },
               ],
-            })(<Input.Password  placeholder="密码" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}/>)}
+            })(<Input.Password  name="password" value={this.state.password} onChange={e=>this.changeValue(e)} placeholder="密码" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)'  }}/>}/>)}
           </Form.Item>
         
         <Form.Item>
@@ -56,7 +97,7 @@ class NormalLoginForm extends React.Component {
             initialValue: true,
           })(<Checkbox><font color="yelloww">记住密码</font></Checkbox>)}
           <a className="login-form-forgot" href=""> </a>
-          <Button type="primary" htmlType="submit" className="login-form-button" href="/studentone">学生登录</Button>
+          <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.upload}>学生登录</Button>
           <Button type="primary" htmlType="submit" className="login-form-button" href="/houqin">后勤登录</Button>
           或<a href="../register">现在注册</a>
         </Form.Item>
