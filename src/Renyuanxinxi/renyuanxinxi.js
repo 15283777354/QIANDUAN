@@ -1,9 +1,19 @@
 import React from 'react'
+import Axios from 'axios'
 var Houqing=require('../Sushexinxi/sushexinxi.css');
 // 维修信息
 
 export default class SushexinxiPage extends React.Component{
+    
+
     render(){
+        Axios.get('/user/getUsers')
+.then(function (response) {
+  console.log(response);
+})
+.catch(function (error) {
+  console.log(error);
+});
         return(
             <div className={Houqing.whole}>
                 <table className={Houqing.one}  type="text">

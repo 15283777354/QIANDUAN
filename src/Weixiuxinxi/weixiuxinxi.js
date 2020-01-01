@@ -1,5 +1,6 @@
 import React from 'react'
 import {Drawer,Form,Col,Row,Input,Checkbox,message,Button,Icon,onClick,Select} from 'antd';
+import Axios from 'axios';
 var Houqing=require('../Weixiuxinxi/weixiuxinxi.css');
 // 维修信息
 const info = () => {
@@ -106,6 +107,13 @@ export default class WeixiuxinxiPage extends React.Component{
 
     
     render(){
+      Axios.get('/user/getConplaint')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
         return(
             <div className={Houqing.whole}>
                 <table className={Houqing.one}  type="text">

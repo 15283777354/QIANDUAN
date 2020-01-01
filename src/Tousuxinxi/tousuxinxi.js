@@ -1,5 +1,6 @@
 import React from 'react'
 import {Drawer,Form,Col,Row,Input,Checkbox,message,Button,Icon,onClick,Select} from 'antd';
+import Axios from 'axios';
 // 投诉信息
 
 var TousuxinxiCss=require('../Tousuxinxi/tousuxinxi.css');
@@ -82,6 +83,13 @@ const App = Form.create()(DrawerForm);
 
 export default class TousuxinxiPage extends React.Component{
     render(){
+      Axios.get('/Tousu/getAllTousuxinxi')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
         return(
             <div className={TousuxinxiCss.whole1}>
 

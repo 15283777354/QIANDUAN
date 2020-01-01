@@ -1,5 +1,6 @@
 import React from 'react'
 import {Drawer,Form,Col,Row,Input,Checkbox,message,Button,Icon,onClick,Select} from 'antd';
+import Axios from 'axios';
 var Houqing=require('../Fankuixinxi/fankuixinxi.css');
 // 维修信息
 
@@ -82,6 +83,13 @@ class DrawerForm extends React.Component {
 
 export default class FankuixinxiPage extends React.Component{
     render(){
+      Axios.get('/Fankui/getFankui')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
         return(
             <div className={Houqing.whole}>
                 <table className={Houqing.one}  type="text">
